@@ -29,6 +29,9 @@ namespace T7_P2_1.Repositories
         [Dependency]
         public IGenericRepository<Student> StudentsRepository { get; set; }
 
+        [Dependency]
+        public IGenericRepository<Class> ClassesRepository { get; set; }
+
         public void Save()
         {
             context.SaveChanges();

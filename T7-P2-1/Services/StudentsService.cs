@@ -19,60 +19,97 @@ namespace T7_P2_1.Services
             this.db = db;
         }
 
-        public async Task<IEnumerable<Student>> GetAllStudents()
+        public Student CreateStudent(Student student)
         {
-            // We need either a RoleStore etc implementation or we need to do other stuff...
+            db.UsersRepository.Insert(student);
+            db.Save();
 
-            IdentityRole role = await db.RolesRepository.GetRole("students");
-            // IdentityRole role = db.AuthRepository.GetRole("students");
+            return student;
+        }
 
+        public Student EnrollStudentInClass(string studentId, int classId)
+        {
+            Student student = (Student)db.UsersRepository.GetByID(studentId);
 
-
-
-
-
-
-            // Find all users currently in database
-            var users = db.UsersRepository.Get();
-
-            foreach (var user in users)
-            {
-                if (user is Student)
-                {
-                    var studentUser = user as Student;
-                    Debug.WriteLine("The user is a student");
-                    Debug.WriteLine("His nickname is: " + studentUser.NickName);
-                }
-                Debug.WriteLine(user.UserName);
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            if (role == null)
+            if (student == null)
             {
                 return null;
             }
 
-            role = await db.AuthRepository.GetRole("students");
+            Class schoolClass = db.ClassesRepository.GetByID(classId);
 
-            var something = await db.AuthRepository.FindUser("csaba", "ddd");
-
-            IEnumerable<Student> students = db.UsersRepository.Get(u => u.Roles.Any(r => r.RoleId == role.Id)).Select(s =>
-            new Student
+            if (schoolClass == null)
             {
-                // Convert user to student or studentdto...
-            });
+                return null;
+            }
+
+            student.Class = schoolClass;
+            db.Save();
+
+            return student;
+        }
+
+        public async Task<IEnumerable<Student>> GetAllStudents()
+        {
+            //// We need either a RoleStore etc implementation or we need to do other stuff...
+
+            //IdentityRole role = await db.RolesRepository.GetRole("students");
+            //// IdentityRole role = db.AuthRepository.GetRole("students");
+
+
+
+
+
+
+
+            //// Find all users currently in database
+            //var users = db.UsersRepository.Get();
+
+            //foreach (var user in users)
+            //{
+            //    if (user is Student)
+            //    {
+            //        var studentUser = user as Student;
+            //        Debug.WriteLine("The user is a student");
+            //        Debug.WriteLine("His nickname is: " + studentUser.NickName);
+            //    }
+            //    Debug.WriteLine(user.UserName);
+            //}
+
+            //// So basically this is the natural approach
+            //// I should make a few changes to GenericRepo to allow filtering in query
+            //// I do not need all users pulled in every query...
+            //var users2 = db.UsersRepository.Get().OfType<Student>();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //if (role == null)
+            //{
+            //    return null;
+            //}
+
+            //role = await db.AuthRepository.GetRole("students");
+
+            //var something = await db.AuthRepository.FindUser("csaba", "ddd");
+
+            //IEnumerable<Student> students = db.UsersRepository.Get(u => u.Roles.Any(r => r.RoleId == role.Id)).Select(s =>
+            //new Student
+            //{
+            //    // Convert user to student or studentdto...
+            //});
+
+            var students = db.UsersRepository.Get().OfType<Student>().ToList();
 
             return students;
         }

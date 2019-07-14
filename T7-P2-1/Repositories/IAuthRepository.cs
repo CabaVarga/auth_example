@@ -20,5 +20,7 @@ namespace T7_P2_1.Repositories
 
         Task<IdentityRole> GetRole(string roleName);
         // IdentityRole GetRole(string roleName);
+
+        Task<IEnumerable<Student>> GetStudents();
     }
 }

@@ -14,6 +14,8 @@ namespace T7_P2_1.Repositories
         IRolesRepository RolesRepository { get; }
         IGenericRepository<Student> StudentsRepository { get; }
 
+        IGenericRepository<Class> ClassesRepository { get; }
+
         void Save();
     }
 }

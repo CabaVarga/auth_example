@@ -11,5 +11,9 @@ namespace T7_P2_1.Services
     {
         Task<IEnumerable<Student>> GetAllStudents();
         IEnumerable<Student> GetAllStudentsFromRepo();
+
+        Student CreateStudent(Student student);
+
+        Student EnrollStudentInClass(string studentId, int classId);
     }
 }

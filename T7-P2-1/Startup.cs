@@ -16,6 +16,8 @@ using T7_P2_1.Repositories;
 using T7_P2_1.Models;
 using Unity.WebApi;
 using T7_P2_1.Services;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 [assembly: OwinStartup(typeof(T7_P2_1.Startup))]
 namespace T7_P2_1
@@ -49,8 +51,18 @@ namespace T7_P2_1
 
             // Token Generation
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
+            // Token consumption(?)
+            OAuthBearerAuthenticationOptions OAuthBearerOptions = new OAuthBearerAuthenticationOptions()
+            {
+                //Provider = new OAuthBearerAuthenticationProvider()
+                //{
+                //    OnValidateIdentity = (ctx) => new Task<object>(null)
+                //}
+                Provider = new SimpleBearerAuthenticationProvider()
+            };
+
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
         }
 
         private UnityContainer SetupUnity()
@@ -66,9 +78,11 @@ namespace T7_P2_1
             container.RegisterType<IGenericRepository<ApplicationUser>, GenericRepository<ApplicationUser>>();
             container.RegisterType<IAuthRepository, AuthRepository>();
             container.RegisterType<IRolesRepository, RolesRepository>();
+            container.RegisterType<IGenericRepository<Class>, GenericRepository<Class>>();
 
             container.RegisterType<IGenericRepository<Student>, GenericRepository<Student>>();
             container.RegisterType<IStudentsService, StudentsService>();
+            container.RegisterType<IClassesService, ClassesService>();
             container.RegisterType<IUserService, UserService>();
             return container;
         }

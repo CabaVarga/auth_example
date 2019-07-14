@@ -22,6 +22,8 @@ namespace T7_P2_1.Infrastructure
             modelBuilder.Entity<AdminUser>().ToTable("AdminUser");
             modelBuilder.Entity<Student>().ToTable("Student");
         }
+
+        public DbSet<Class> Classes { get; set; }
     }
 
 }

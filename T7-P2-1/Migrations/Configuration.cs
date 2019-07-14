@@ -26,8 +26,8 @@ namespace T7_P2_1.Migrations
             //IdentityRole roleCustomers = new IdentityRole() { Name = "customers" };
             //context.Roles.AddOrUpdate(roleCustomers);
 
-            IdentityRole roleUsers = new IdentityRole() { Name = "users" };
-            context.Roles.AddOrUpdate(roleUsers);
+            //IdentityRole roleUsers = new IdentityRole() { Name = "users" };
+            //context.Roles.AddOrUpdate(roleUsers);
 
             //Student s1 = new Student()
             //{

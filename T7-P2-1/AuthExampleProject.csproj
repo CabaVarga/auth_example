@@ -156,6 +156,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
@@ -163,22 +164,28 @@
     <Compile Include="Infrastructure\Initialize.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminUser.cs" />
+    <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DTOs\UserDTO.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Providers\SimpleBearerAuthenticationProvider.cs" />
     <Compile Include="Repositories\AuthRepository.cs" />
     <Compile Include="Repositories\CustomersRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Repositories\GenericRepositoryAsync.cs" />
     <Compile Include="Repositories\IAuthRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="Repositories\IGenericRepositoryAsync.cs" />
     <Compile Include="Repositories\IRolesRepository.cs" />
     <Compile Include="Repositories\ICustomersRepository.cs" />
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\RolesRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
+    <Compile Include="Services\ClassesService.cs" />
+    <Compile Include="Services\IClassesService.cs" />
     <Compile Include="Services\IStudentsService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\StudentsService.cs" />

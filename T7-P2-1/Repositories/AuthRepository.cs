@@ -29,6 +29,7 @@ namespace T7_P2_1.Repositories
         {
             var role = await _roleManager.FindByNameAsync(roleName);
             
+            
             return role;
         }
 
@@ -79,6 +80,13 @@ namespace T7_P2_1.Repositories
             }
         }
 
+        // This would be the way to get specific types of users
+        // The only thing is, we also have a UsersRepository of the GenericRepository type
+        // with much worse access...
+        public async Task<IEnumerable<Student>> GetStudents()
+        {
+            return await _userManager.Users.OfType<Student>().ToListAsync();
+        }
     }
     
 }
