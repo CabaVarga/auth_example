@@ -10,7 +10,7 @@ using System.Web;
 
 namespace T7_P2_1.Models
 {
-    public abstract class ApplicationUser : IdentityUser
+    public abstract class ApplicationUser : IdentityUser<int, IdentityUserLogin<int>, IdentityUserRole<int>, IdentityUserClaim<int>>
     {
         [Required]
         [MaxLength(100)]
