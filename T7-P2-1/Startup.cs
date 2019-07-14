@@ -65,7 +65,10 @@ namespace T7_P2_1
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IGenericRepository<ApplicationUser>, GenericRepository<ApplicationUser>>();
             container.RegisterType<IAuthRepository, AuthRepository>();
+            container.RegisterType<IRolesRepository, RolesRepository>();
 
+            container.RegisterType<IGenericRepository<Student>, GenericRepository<Student>>();
+            container.RegisterType<IStudentsService, StudentsService>();
             container.RegisterType<IUserService, UserService>();
             return container;
         }

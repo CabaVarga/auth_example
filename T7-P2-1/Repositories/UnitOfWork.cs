@@ -23,6 +23,12 @@ namespace T7_P2_1.Repositories
         [Dependency]
         public IAuthRepository AuthRepository { get; set; }
 
+        [Dependency]
+        public IRolesRepository RolesRepository { get; set; }
+
+        [Dependency]
+        public IGenericRepository<Student> StudentsRepository { get; set; }
+
         public void Save()
         {
             context.SaveChanges();

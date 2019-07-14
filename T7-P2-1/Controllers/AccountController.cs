@@ -61,6 +61,26 @@ namespace T7_P2_1.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
+        [Route("register-student")]
+        public async Task<IHttpActionResult> RegisterStudent(UserDTO userModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await service.RegisterStudent(userModel);
+
+            if (result == null)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok();
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

@@ -12,7 +12,7 @@ namespace T7_P2_1.Infrastructure
     {
         public AuthContext() : base("UserManagmentContext")
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AuthContext>());
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -20,6 +20,7 @@ namespace T7_P2_1.Infrastructure
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<AdminUser>().ToTable("AdminUser");
+            modelBuilder.Entity<Student>().ToTable("Student");
         }
     }
 

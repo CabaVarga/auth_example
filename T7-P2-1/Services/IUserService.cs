@@ -13,5 +13,8 @@ namespace T7_P2_1.Services
     {
         Task<IdentityResult> RegisterCustomer(UserDTO user);
         Task<IdentityResult> RegisterAdmin(UserDTO user);
+        Task<IdentityResult> RegisterStudent(UserDTO user);
+
+        IEnumerable<Customer> GetAllCustomers();
     }
 }

@@ -11,6 +11,8 @@ namespace T7_P2_1.Repositories
     {
         IGenericRepository<ApplicationUser> UsersRepository { get; }
         IAuthRepository AuthRepository { get; }
+        IRolesRepository RolesRepository { get; }
+        IGenericRepository<Student> StudentsRepository { get; }
 
         void Save();
     }
