@@ -17,6 +17,7 @@ namespace T7_P2_1.Services
 
         public UserService(IUnitOfWork unitOfWork)
         {
+            // A comment
             db = unitOfWork;
         }
 
